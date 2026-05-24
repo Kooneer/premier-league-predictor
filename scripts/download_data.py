@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from src.config_loader import load_config
 from src.ingestion.fbref_provider import FBrefProvider
+from src.infrastructure.database import save_to_db
 
 def run_ingestion() -> None:
     config = load_config()
@@ -12,16 +13,11 @@ def run_ingestion() -> None:
 
     target_season_schedule: pd.DataFrame = provider.get_season_schedule(target_season)
     historical_schedules: pd.DataFrame = provider.get_seasons_schedules(historical_seasons)
+   
+    # Save to DB
+    save_to_db(target_season_schedule, "target season")
+    save_to_db(historical_schedules, "historical schedules")
+    print("Data saved to DB.")
 
-    # Paths
-    current_file_path = os.path.abspath(__file__)
-    project_root = os.path.dirname(os.path.dirname(current_file_path))
-    output_dir = os.path.join(project_root, "data", "raw")
-    target_path = os.path.join(output_dir, "target_season_schedule.csv")
-    historical_path = os.path.join(output_dir, "historical_schedules.csv")
-    
-    # Save to CSV file
-    target_season_schedule.to_csv(target_path, index=False)
-    historical_schedules.to_csv(historical_path, index=False)
 if __name__ == "__main__":
     run_ingestion()
