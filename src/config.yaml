@@ -1,0 +1,9 @@
+provider:
+  league: "ENG-Premier League"
+  target_season: "2025-2026"
+  historical_seasons:
+    - "2024-2025"
+    - "2023-2024"
+    - "2022-2023"
+    - "2021-2022"
+    - "2020-2021"
