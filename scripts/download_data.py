@@ -15,8 +15,8 @@ def run_ingestion() -> None:
     historical_schedules: pd.DataFrame = provider.get_seasons_schedules(historical_seasons)
    
     # Save to DB
-    save_to_db(target_season_schedule, "raw_target season")
-    save_to_db(historical_schedules, "raw_historical schedules")
+    save_to_db(target_season_schedule, "raw_target_season")
+    save_to_db(historical_schedules, "raw_historical_schedules")
     print("Data saved to DB.")
 
 if __name__ == "__main__":
