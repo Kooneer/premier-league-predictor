@@ -28,7 +28,6 @@ def inspect_table_data(table_name: str) -> None:
     print("1. METADATA & COLUMN TYPES (df.info()):")
     print("="*50)
     print(df.info())
-    # ... reszta raportu bez zmian ...
     
     print("\n" + "="*50)
     print("2. MISSING VALUES (NaN) PER COLUMN:")
