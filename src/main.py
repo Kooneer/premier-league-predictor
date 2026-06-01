@@ -9,7 +9,7 @@ def main():
     print("\n" + "="*40)
     print("KOLUMNY W PRZETWORZONYM DATAFRAME:")
     print("="*40)
-    print(processed_db.columns.tolist())  # Zobaczymy czystą listę nazw
+    print(processed_db.columns.tolist())
     
     print("\n" + "="*40)
     print("PIERWSZE 3 WIERSZE PO CZYSZCZENIU:")
