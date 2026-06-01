@@ -37,3 +37,17 @@ def read_from_db(query: str) -> pd.DataFrame:
     finally:
         if 'conn' in locals():
             conn.close()
+
+def get_all_tables() -> list[str]:
+    """
+    Fetches the names of all tables existing in the SQLite database.
+    """
+    query = "SELECT name FROM sqlite_master WHERE type='table';"
+    try:
+        df = read_from_db(query)
+        if not df.empty:
+            return df['name'].tolist()
+        return []
+    except Exception as e:
+        print(f"Unexpected error while fetching table metadata: {e}", file=sys.stderr)
+        return []
